@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\newStudentRequestFormValidation;
 use App\Models\student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
 
 class StudentController extends Controller
@@ -27,6 +28,7 @@ class StudentController extends Controller
     {
         $input=$request->all();
         student::create($input);
+        Session::flash('added','Student Added Successfully');
         return redirect('students');
     }
 
@@ -48,6 +50,7 @@ class StudentController extends Controller
         $students=student::find($id);
         $input=$request->all();
         $students->update($input);
+        Session::flash('updated','Student updated Successfully');
         return redirect('students');
 
     }
@@ -55,6 +58,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         student::destroy($id);
-        return redirect('students')->with('flash_message', 'Student deleted!');
+        Session::flash('flash_message','Student deleted!');
+        return redirect('students');
     }
 }

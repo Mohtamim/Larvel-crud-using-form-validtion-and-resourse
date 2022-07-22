@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/',[StudentController::class,'index']);
 Route::resource('students',StudentController::class);
 

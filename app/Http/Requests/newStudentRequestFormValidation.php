@@ -27,7 +27,7 @@ class newStudentRequestFormValidation extends FormRequest
             'name'=>'required|string|regex:/^[\pL\s\-]+$/u',
             'class'=>'required|string',
             'roll'=>'required|string',
-            'section'=>'required|string|regex:/^[\pL\s\-]+$/u',
+            'section'=>'required|Alpha',
 
         ];
     }

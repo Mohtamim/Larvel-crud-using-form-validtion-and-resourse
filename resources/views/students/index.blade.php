@@ -7,10 +7,18 @@
                     <div class="card-header">
                         <h2>Student List</h2>
                     </div>
+
                     <div class="card-body">
                         <a href="{{url('students/create')}}" class="btn btn-success btn-sm" title="Add new Student">
                             Add New
                         </a><br><br>
+                        @if (session('flash_message'))
+                        <div class="bg-danger text-white text-center">{{ session('flash_message')}}</div>
+                        @elseif (session('added'))
+                        <div class="bg-success text-white text-center">{{ session('added')}}</div>
+                        @elseif (session('updated'))
+                        <div class="bg-info text-white text-center">{{ session('updated')}}</div>
+                         @endif
                         <div class="table-responsive">
                             <table class="table text-center">
                                 <thead>
@@ -53,4 +61,13 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+    </script>
+
 @endsection
