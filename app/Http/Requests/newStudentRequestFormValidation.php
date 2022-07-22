@@ -24,10 +24,10 @@ class newStudentRequestFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string|alpha',
+            'name'=>'required|string|regex:/^[\pL\s\-]+$/u',
             'class'=>'required|string',
             'roll'=>'required|string',
-            'section'=>'required|string|alpha',
+            'section'=>'required|string|regex:/^[\pL\s\-]+$/u',
 
         ];
     }
